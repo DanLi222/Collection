@@ -5,6 +5,24 @@
   <h2><%= @item.name %></h2><%= link_to 'Edit', edit_item_path(@item) %>
 </div>
 
+<div class="container">
+  <div class="d-flex justify-content-center row">
+    <div class="col-md-8">
+      <div class="p-3 bg-grey mt-2 rounded">
+        <strong><h4>Comments</h4></strong>
+      </div>
+      <div>
+        <%= render @item.comments %>
+      </div>
+      <div class="p-3 bg-grey mt-2 rounded">
+        <h4>Write a comment</h4>
+      </div>
+      <div>
+        <%= render 'comments/form' %>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 

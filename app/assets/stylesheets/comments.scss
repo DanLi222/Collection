@@ -1,0 +1,32 @@
+// Place all the styles related to the Comments controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+div.mt-2 {
+  background: #f8f9fa
+}
+
+.no-box-shadow {
+  box-shadow: none
+}
+
+.btn-success {
+  background: #5a5a5a;
+}
+
+.no-box-shadow:focus {
+  box-shadow: none
+}
+
+.day {
+  font-size: 9px
+}
+
+.comment-text {
+  font-size: 12px
+}
+
+.delete {
+  font-size: 13px;
+  cursor: pointer
+}
