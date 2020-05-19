@@ -1,8 +1,10 @@
 <div class="d-flex flex-row align-items-center add-comment p-2 bg-white rounded">
   <%= form_with(model: [ @item, @item.comments.build ], local: true) do |form| %>
-    <div class="d-flex flex-row align-items-center add-comment p-2 bg-white rounded">
-      <img class="rounded-circle" src="https://i.imgur.com/QvDFBCC.jpg" width="40">
-      <%= form.text_field :commenter, placeholder: "Leave your name here...", class: "form-control border-0 no-box-shadow ml-1" %>
+    <div class="d-flex flex-row add-comment p-2 bg-white rounded">
+      <%= image_tag(fetch_avatar(current_user), alt: current_user.name, :size=>"40", :class=>"d-inline-block align-top rounded-circle") %>
+      <div class="form-control border-0 no-box-shadow ml-1">
+        <span class="font-weight-bold"><%= current_user.name %></span>
+      </div>
     </div>
     <div class="mt-2">
       <%= form.text_area :body, placeholder: "Leave a constructive comment...", size: "74" %>

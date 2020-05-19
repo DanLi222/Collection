@@ -28,6 +28,9 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="jquery-3.5.1.slim" level="application" />
+    <orderEntry type="library" name="popper.js" level="application" />
+    <orderEntry type="library" name="bootstrap" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="actioncable (v6.0.3, rbenv: 2.6.5) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="actionmailbox (v6.0.3, rbenv: 2.6.5) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="actionmailer (v6.0.3, rbenv: 2.6.5) [gem]" level="application" />
@@ -106,9 +109,6 @@
     <orderEntry type="library" scope="PROVIDED" name="websocket-extensions (v0.1.4, rbenv: 2.6.5) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="xpath (v3.2.0, rbenv: 2.6.5) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="zeitwerk (v2.3.0, rbenv: 2.6.5) [gem]" level="application" />
-    <orderEntry type="library" name="jquery-3.5.1.slim" level="application" />
-    <orderEntry type="library" name="popper.js" level="application" />
-    <orderEntry type="library" name="bootstrap" level="application" />
   </component>
   <component name="RModuleSettingsStorage">
     <LOAD_PATH number="0" />
