@@ -1,46 +1,118 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<body>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <div class="container">
+      <div class="row flex-lg-nowrap">
+        <div class="col">
+          <div class="row">
+            <div class="col mb-3">
+              <div class="card">
+                <div class="card-body">
+                  <div class="e-profile">
+                    <div class="row">
+                      <div class="col-12 col-sm-auto mb-3">
+                        <div class="mx-auto" style="width: 140px;">
+                          <div class="d-flex justify-content-center align-items-center rounded" style="height: 140px; background-color: rgb(233, 236, 239);">
+                            <span style="color: rgb(166, 168, 170); font: bold 8pt Arial;"><%= image_tag(fetch_avatar(current_user), :size=>"120", :class=>"rounded")%></span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
+                        <div class="text-center text-sm-left mb-2 mb-sm-0">
+                          <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap"><%= current_user.name %></h4>
+                          <p class="mb-0"><%= current_user.email %></p>
+                          <div class="text-muted"><small></small></div>
+                          <div class="mt-2">
+                            <button class="btn btn-primary" type="button">
+                              <i class="fa fa-fw fa-camera"></i>
+                              <%= f.file_field :avatar %>
+                            </button>
+                          </div>
+                        </div>
+                        <div class="text-center text-sm-right">
+                          <span class="badge badge-secondary">administrator</span>
+                          <div class="text-muted"><small><%= current_user.created_at %></small></div>
+                        </div>
+                      </div>
+                    </div>
+                    <ul class="nav nav-tabs">
+                      <li class="nav-item"><a href="" class="active nav-link">Settings</a></li>
+                    </ul>
+                    <div class="tab-content pt-3">
+                      <div class="tab-pane active">
+                        <form class="form" novalidate="">
+                          <div class="row">
+                            <div class="col">
+                              <div class="row">
+                                <div class="col">
+                                  <div class="form-group">
+                                    <label>User Name</label>
+                                    <%= f.text_field :name, class:"form-control", placeholder:current_user.name %>
+                                  </div>
+                                </div>
+                                <div class="col">
+                                  <div class="form-group">
+                                    <label>New Password<i>(leave blank if you don't want to change it)</i></label>
+                                    <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+                                    <% if @minimum_password_length %>
+                                      <br />
+                                      <em><%= @minimum_password_length %> characters minimum</em>
+                                    <% end %>
+                                  </div>
+                                </div>
+                              </div>
 
-  <%= f.label :profile %><br />
-  <%= f.file_field :avatar %>
+                              <div class="row">
+                                <div class="col">
+                                  <div class="form-group">
+                                    <label>Email</label>
+                                    <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
+                                    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                                      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+                                    <% end %>
+                                  </div>
+                                </div>
+                                <div class="col">
+                                  <div class="form-group">
+                                    <label>Confirm Password</label>
+                                    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col">
+                                  <div class="form-group">
+                                    <label>Current Password</label>
+                                    <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control" %>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col d-flex justify-content-end">
+                              <%= f.submit "Update", class: "btn btn-primary" %>
+                            </div>
+                          </div>
+                        </form>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+        </div>
+      </div>
+      <h3>Cancel my account</h3>
+      <p>Unhappy? <%= button_to t('user.cancel'), registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
+    </div>
 <% end %>
 
-<h3>Cancel my account</h3>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+</body>
