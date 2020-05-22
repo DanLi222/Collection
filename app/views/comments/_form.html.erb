@@ -1,11 +1,11 @@
-<%= form_with(model: [ @item, @item.comments.build ], local: true) do |form| %>
+ <%= form_with(model: [ @item, @item.comments.build ], local: true) do |form| %>
   <div class="p-3 bg-grey rounded">
     <div class="d-flex justify-content-between">
       <div class="d-flex flex-row user">
         <%= image_tag(fetch_avatar(current_user), :size=>"40", :class=>"rounded-circle img-fluid img-responsive") %>
         <div class="d-flex flex-column ml-2">
-          <span class="font-weight-bold"><%= current_user.name %></span>
-          <span class="day"><%= current_user.email %></span>
+            <span class="font-weight-bold"><%= current_user.name %></span>
+            <span class="day"><%= current_user.email %></span>
         </div>
       </div>
     </div>
