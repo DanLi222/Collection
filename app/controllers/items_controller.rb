@@ -1,6 +1,11 @@
 class ItemsController < ApplicationController
   def index
-    @items = Item.all
+    apply_filter if params[:search].present?
+    if @items.nil? || @items.empty?
+      @items = Item.all
+    else
+      flash[:notice] = nil
+    end
   end
 
   def show
@@ -44,6 +49,12 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:name, :category, :image)
+    params.require(:item).permit(:name, :category, :image, :search)
+  end
+
+  def apply_filter
+    @hidden = "hidden"
+    @items = Item.search(params[:search])
+    flash[:notice] = "No results found" if @items.empty?
   end
 end
