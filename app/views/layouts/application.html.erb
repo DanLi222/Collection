@@ -16,6 +16,7 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 
   <header>
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
       <% if user_signed_in? %>
         <a class="navbar-brand" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="dropdownMenuButton">
@@ -26,18 +27,19 @@
           <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'dropdown-item'  %>
         </div>
       <% else %>
-        <%= link_to "Login", new_user_session_path, :class => 'navbar-brand'  %>
+        <%= link_to t('user.sign.in'), new_user_session_path, :class => 'navbar-brand'  %>
       <% end %>
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href=<%= items_path %>>Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href=<%= items_path %>><%= t('collection.home') %><span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href=<%= new_item_path %>>Add Image</a>
+            <a class="nav-link" href=<%= new_item_path %>><%= t('item.add') %></a>
           </li>
         </ul>
 
+        <!-- Search form -->
         <%= form_tag items_path, :method=>"get", :class=>"form-inline mt-2 mt-md-0" do %>
           <%= text_field_tag :search, params[:search], class:"form-control mr-sm-2" %>
           <%= submit_tag("Search", class:"btn btn-outline-success my-2 my-sm-0") %>
@@ -47,12 +49,13 @@
   </header>
   
   <body>
-  <% if notice %>
-    <p class="alert alert-success"><%= notice %></p>
-  <% end %>
-  <% if alert %>
-    <p class="alert alert-danger"><%= alert %></p>
-  <% end %>
-  <%= yield %>
+    <!-- Alert -->
+    <% if notice %>
+      <p class="alert alert-success"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+      <p class="alert alert-danger"><%= alert %></p>
+    <% end %>
+    <%= yield %>
   </body>
 </html>

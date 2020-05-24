@@ -1,38 +1,32 @@
-<body>
-<div class="container">
-  <div class="row">
+<body class="bg-light">
+  <div class="container">
     <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
       <div class="card card-signin my-5">
         <div class="card-body">
+          <!-- Sign in form -->
           <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-
-            <h5 class="card-title text-center">Sign In</h5>
-              <form class="form-signin">
-                <div class="form-label-group">
-                  <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "Email address" %>
-                  <label for="inputEmail">Email address</label>
+            <h5 class="card-title text-center"><%= t('user.sign.in') %></h5>
+            <form class="form-signin">
+              <div class="form-label-group">
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control"%>
+                <label for="inputEmail"><%= t('user.email.address') %></label>
+              </div>
+              <div class="form-label-group">
+                <%= f.password_field :password, autocomplete: "current-password", class: "form-control"%>
+                <label for="inputPassword"><%= t('user.password.password') %></label>
+              </div>
+              <% if devise_mapping.rememberable? %>
+                <div class="field">
+                  <%= f.check_box :remember_me %>
+                  <%= f.label :remember_me %>
                 </div>
-
-                <div class="form-label-group">
-                  <%= f.password_field :password, autocomplete: "current-password", class: "form-control", placeholder: "Password" %>
-                  <label for="inputPassword">Password</label>
-                </div>
-
-                <% if devise_mapping.rememberable? %>
-                  <div class="field">
-                    <%= f.check_box :remember_me %>
-                    <%= f.label :remember_me %>
-                  </div>
-                <% end %>
-
-                <%= f.submit "Log in", class: "btn btn-lg btn-primary btn-block text-uppercase" %>
-                <%= render "devise/shared/links" %>
-
-              </form>
-            <% end %>
+              <% end %>
+              <%= f.submit "Log in", class: "btn btn-lg btn-primary btn-block text-uppercase" %>
+              <%= render "devise/shared/links" %>
+            </form>
+          <% end %>
         </div>
       </div>
     </div>
   </div>
-</div>
 </body>

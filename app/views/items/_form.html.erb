@@ -1,10 +1,10 @@
+<!-- Item add or edit form -->
 <%= form_with(model: @item, local: true) do |form| %>
-
+  <!-- Prompts errors -->
   <% if @item.errors.any? %>
     <div id="error_explanation">
       <h2>
-        <%= pluralize(@item.errors.count, "error") %> prohibited
-        this item from being saved:
+        <%= pluralize(@item.errors.count, "error") %><%= t('item.prohibit') %>
       </h2>
       <ul>
         <% @item.errors.full_messages.each do |msg| %>
@@ -14,23 +14,22 @@
     </div>
   <% end %>
 
-  <p>
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </p>
-
-  <p>
-    <%= form.label :category %>
-    <%= form.text_field :category %>
-  </p>
-
-  <p>
-    <%= form.file_field :image %>
-  </p>
-
-  <p>
-    <%= form.submit class: "btn btn-success btn-sm border-0 px-3"%>
-  </p>
-
+  <!-- Create or edit item -->
+  <form class="form-signin">
+    <div class="form-label-group">
+      <%= form.text_field :name, class: "form-control" %>
+      <label for="inputEmail"><%= t('item.name') %></label>
+    </div>
+    <div class="form-label-group">
+      <%= form.text_field :category, class: "form-control" %>
+      <label for="inputPassword"><%= t('item.category') %></label>
+    </div>
+    <div class="form-label-group">
+      <%= form.file_field :image %>
+    </div>
+    <div class="mt-2">
+      <%= form.submit class: "btn btn-success btn-sm border-0 px-3"%>
+    </div>
+  </form>
 <% end %>
 

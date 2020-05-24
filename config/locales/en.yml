@@ -1,3 +1,52 @@
 en:
+  carousel:
+    slide1:
+      name: Collection.
+      description: Collection provides a place for you to download and share images you like.
+      button: Sign up
+    slide2:
+      name: Enjoy.
+      description: Enjoy Having a collection of your own.
+    slide3:
+      name: Share.
+      description: Share your images to other people.
+      button: Share
+    previous: Previous
+    next: Next
+
+  collection:
+    name: Collection
+    company: 'Collection.dan'
+    back: Back to top
+    home: Home
+
   user:
+    name: User Name
+    edit: Edit Profile
+    sign:
+      in: Sign In
+      up: Sign Up
+    email:
+      address: Email address
+      confirm: 'Currently waiting confirmation for:'
+    password:
+      password: Password
+      new: New Password
+      blank: (leave blank if you don't want to change it)
+      min: ' characters minimum'
+      confirm: Confirm Password
+      current: Current Password
+    setting: Settings
+    unhappy: Unhappy?
     cancel: Cancel my account
+
+  item:
+    name: Name
+    category: Category
+    add: Add image
+    edit: Edit image
+    prohibit: ' prohibited this item from being saved:'
+
+  comment:
+    comment: Comments
+    write: Write a comment

@@ -1,25 +1,28 @@
-<div class="container bg-light">
-  <div class="row flex-lg-nowrap">
-    <div class="col">
-      <div class="row">
-        <div class="col mb-3">
-          <div class="">
-            <div class="card-body text-center">
-              <a href="<%= edit_item_path(@item) %>"><img src="<%= url_for(@item.image) %>"></a>
+<body>
+  <div class="container bg-light">
+    <div class="row flex-lg-nowrap">
+      <div class="col">
+        <div class="row">
+          <div class="col mb-3">
+            <!-- Display image -->
+            <div class="card-body text-center mt-2">
+              <a href="<%= edit_item_path(@item) %>"><img class="rounded img-fluid" src="<%= url_for(@item.image) %>"></a>
             </div>
-
+            <!-- Comments section -->
             <div class="container">
               <div class="d-flex justify-content-center row">
                 <div class="col-md-10">
+                  <!-- Display comments -->
                   <div class="p-3 bg-grey mt-2 rounded">
-                    <strong><h4>Comments</h4></strong>
+                    <strong><h4><%= t('comment.comment') %></h4></strong>
                   </div>
                   <div>
                     <%= render @item.comments %>
                   </div>
+                  <!-- Write a comment -->
                   <% if current_user.present? %>
                     <div class="p-3 bg-grey mt-2 rounded">
-                      <h4>Write a comment</h4>
+                      <h4><%= t('comment.write') %></h4>
                     </div>
                     <div>
                       <%= render 'comments/form' %>
@@ -28,12 +31,10 @@
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-
+</body>
 
