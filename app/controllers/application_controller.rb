@@ -1,9 +1,8 @@
 class ApplicationController < ActionController::Base
-  before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  # define attribute for User
   protected
-
   def configure_permitted_parameters
     added_attrs = [:name, :email, :password, :password_confirmation, :remember_me, :avatar]
     devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
